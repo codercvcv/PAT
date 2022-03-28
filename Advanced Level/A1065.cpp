@@ -14,7 +14,8 @@ int main() {
     } else if (a < 0 && b < 0 && result >= 0) {
       printf("Case #%d: false\n", i);
     } else {
-      result > c ? printf("Case #%d: true\n", i) : printf("Case #%d: false\n", i);
+      result > c ? printf("Case #%d: true\n", i)
+                 : printf("Case #%d: false\n", i);
     }
   }
 
