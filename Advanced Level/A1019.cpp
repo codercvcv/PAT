@@ -2,32 +2,33 @@
 
 using namespace std;
 
-const int maxn = 100;
-int ans[maxn] = {0};
-
-int main() {
-  int number, base;
-  cin >> number >> base;
-  int count = 0;
-  do {
-    ans[count++] = number % base;
-    number /= base;
-  } while (number);
-
-  int left = 0, right = count - 1;
-  bool flag = true;
+bool Judge(vector<int> number) {
+  int left = 0, right = number.size() - 1;
   while (left < right) {
-    if (ans[left++] != ans[right--]) {
-      flag = false;
-      break;
+    if (number[left++] != number[right--]) {
+      return false;
     }
   }
+  return true;
+}
 
+int main() {
+  int n, b;
+  cin >> n >> b;
+  vector<int> number;
+  do {
+    number.push_back(n % b);
+    n /= b;
+  } while (n);
+
+  bool flag = Judge(number);
   flag == true ? printf("Yes\n") : printf("No\n");
-  for (int i = count - 1; i >= 0; i--) {
-    printf("%d", ans[i]);
-    if (i > 0)
+
+  for (int i = number.size() - 1; i >= 0; --i) {
+    printf("%d", number[i]);
+    if (i > 0) {
       printf(" ");
+    }
   }
   return 0;
 }
