@@ -1,22 +1,16 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 int main() {
-  int a, b, sum;
+  int a, b;
   cin >> a >> b;
-  sum = a + b;
-  if (sum < 0) {
-    printf("-");
-    sum = -sum;
+  string s = to_string(a + b);
+  int len = s.length();
+  for (int i = 0; i < len; i++) {
+    cout << s[i];
+    if (s[i] == '-') continue;
+    if ((i + 1) % 3 == len % 3 && i != len - 1) cout << ",";
   }
-
-  if (sum >= 1000000)
-    printf("%d,%03d,%03d", sum / 1000000, (sum % 1000000) / 1000, sum % 1000);
-  else if (sum >= 1000)
-    printf("%d,%03d", sum / 1000, sum % 1000);
-  else
-    cout << sum;
 
   return 0;
 }
