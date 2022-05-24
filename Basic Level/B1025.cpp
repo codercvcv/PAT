@@ -18,8 +18,7 @@ int main() {
   }
 
   vector<Node> ans;
-  for (int i = 0; i < n; ++i) {
-    if (mp.find(head) == mp.end()) break;
+  while (head != -1) {
     ans.push_back(mp[head]);
     head = mp[head].next;
   }
