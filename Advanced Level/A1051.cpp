@@ -4,26 +4,24 @@ using namespace std;
 int main() {
   int m, n, k;
   cin >> m >> n >> k;
-  for (int i = 0; i < k; ++i) {
-    bool flag = false;
-    stack<int> stk;
+  while (k--) {
     vector<int> num(n + 1);
-    for (int j = 1; j <= n; ++j) cin >> num[j];
+    stack<int> stk;
+    for (int i = 1; i <= n; ++i) cin >> num[i];
 
+    bool flag = false;
     int current = 1;
-    for (int j = 1; j <= n; ++j) {
-      stk.push(j);
+    for (int i = 1; i <= n; ++i) {
+      stk.push(i);
       if (stk.size() > m) break;
       while (!stk.empty() && stk.top() == num[current]) {
         stk.pop();
         current++;
       }
     }
+
     if (current == n + 1) flag = true;
-    if (flag)
-      printf("YES\n");
-    else
-      printf("NO\n");
+    (flag == true) ? cout << "YES" << endl : cout << "NO" << endl;
   }
 
   return 0;
